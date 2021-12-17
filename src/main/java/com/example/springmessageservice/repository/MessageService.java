@@ -21,6 +21,15 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
+    public boolean createMsg(Message msg){
+        try {
+            messageRepository.insert(msg);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 
     public ArrayList<String> getgif(String search){
         Gifs gifs = WebClient.create().get().uri("https://api.giphy.com/v1/gifs/search?api_key=ps6eW0EdM79pYdF40WxaSOPMH4rLOMEZ&q=+"+ search +"&limit=5&offset=0&rating=g&lang=en")
